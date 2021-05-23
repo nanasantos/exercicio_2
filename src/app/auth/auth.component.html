@@ -1,0 +1,84 @@
+<div class="auth-page">
+  <div class="container page">
+    <div class="row">
+
+      <div class="col-md-6 offset-md-3 col-xs-12">
+        <h1 class="text-xs-center"></h1>
+        <p class="text-xs-center">
+          <a [routerLink]="['']" *ngIf="authType == 'register'">Faça sua pesquisa aqui!</a>
+          <a [routerLink]="['']" *ngIf="authType == 'login'">Você tem uma conta?</a>
+        </p>
+        <app-list-errors [errors]="errors"></app-list-errors>
+        <form [formGroup]="authForm" (ngSubmit)="submitForm()">
+          <fieldset [disabled]="isSubmitting">
+            <fieldset class="form-group">
+              <input
+                formControlName="name"
+                placeholder="nome"
+                class="form-control form-control-lg"
+                type="password" />
+            </fieldset>
+            <fieldset class="form-group">
+              <input
+                formControlName="email"
+                placeholder="email"
+                class="form-control form-control-lg"
+                type="text" />
+            </fieldset>
+            
+            <fieldset class="form-group">
+              <input
+                formControlName="senha"
+                placeholder="senha"
+                class="form-control form-control-lg"
+                type="text" />
+            </fieldset>
+
+            
+            <fieldset class="form-group">
+              <input
+                formControlName="number"
+                placeholder="código"
+                class="form-control form-control-lg"
+                type="text"
+                *ngIf="authType == 'register'" />
+            </fieldset>
+            <fieldset class="form-group">
+              <input
+                formControlName="descrição"
+                placeholder="descrição"
+                class="form-control form-control-lg"
+                type="text" *ngIf="authType == 'register'"/>
+            </fieldset>
+            <fieldset class="form-group">
+              <input
+                formControlName="tipo"
+                placeholder="tipo"
+                class="form-control form-control-lg"
+                type="password" *ngIf="authType == 'register'"/>
+            </fieldset>
+            <fieldset class="form-group">
+              <input
+                formControlName="number"
+                placeholder="preço"
+                class="form-control form-control-lg"
+                type="text" *ngIf="authType == 'register'"/>
+            </fieldset>
+            <fieldset class="form-group">
+              <input
+                formControlName="nome da loja"
+                placeholder="nome da loja"
+                class="form-control form-control-lg"
+                type="text" *ngIf="authType == 'register'"/>
+            </fieldset>
+            
+            <button class="btn btn-lg btn-primary pull-xs-right" [disabled]="!authForm.valid" type="submit">
+              OK
+            </button>
+          </fieldset>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
